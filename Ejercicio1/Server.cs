@@ -34,8 +34,30 @@ namespace Ejercicio1
             {
                 sw.WriteLine("Bienvenido al servidor de hora y fecha!");
                 sw.Flush(); // Fuerzo el envío de los datos sin esperar al cierre de la conexión
-                
 
+                string msg = ""; // Creo y defino variable para el mensaje que manda el cliente
+                while (msg != null) // Mientras el mensaje escrito por el cliente no sea null...
+                {
+                    string tipo = msg.Split(':')[0];
+
+                    if (tipo == "HORA")
+                    {
+                        int hora = Convert.ToInt32(msg.Split(':')[1]);
+                        int minuto = Convert.ToInt32(msg.Split(':')[2]);
+                        int segundo = Convert.ToInt32(msg.Split(':')[3]);
+                    }
+                    else if (tipo == "FECHA")
+                    {
+
+                    }
+                    else if(tipo == "TODO")
+                    {
+                        int hora = Convert.ToInt32(msg.Split(':')[1]);
+                        int minuto = Convert.ToInt32(msg.Split(':')[2]);
+                        int segundo = Convert.ToInt32(msg.Split(':')[3]);
+                    }
+
+                }
             }
         }
     }
