@@ -73,15 +73,15 @@ namespace Cliente
 
                 if (sender == btnHORA)
                 {
-                    comando = "HORA:" + DateTime.Now.ToString("HH:mm:ss");
+                    comando = "HORA";
                 }
                 else if (sender == btnFECHA)
                 {
-                    comando = "FECHA:" + DateTime.Now.ToString("dd/MM/yyyy");
+                    comando = "FECHA";
                 }
                 else if (sender == btnTODO)
                 {
-                    comando = "TODO:" + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+                    comando = "TODO";
                 }
                 else if(sender == btnAPAGAR)
                 {
@@ -94,11 +94,19 @@ namespace Cliente
                 {
                     sw.WriteLine(comando);
                     sw.Flush();
+                    try
+                    {
+                        string respuestaServer = sr.ReadLine();
+                        lblComando.Text = respuestaServer;
+                    }
+                    catch (IOException e1)
+                    {
+                        lblError.Text = e1.Message;
+                    }
                 }
 
             }
-
-            server.Close();
+            //server.Close();
         }
     }
 
