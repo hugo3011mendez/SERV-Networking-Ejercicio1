@@ -36,49 +36,46 @@ namespace Ejercicio1
                 sw.Flush(); // Fuerzo el envío de los datos sin esperar al cierre de la conexión
 
                 string msg = ""; // Creo y defino variable para el mensaje que manda el cliente
+                string msgParaElCliente = "";
+
                 // No pongo un while porque el ejercicio requiere que se cierre la conexión después de mandar un comando al servidor
-                if (msg != null) // Si el mensaje escrito por el cliente no es null...
+                while (msg != null) // Mientras el mensaje escrito por el cliente no sea null...
                 {
-                    string tipo = msg.Split(':')[0];
-
-                    if (tipo == "HORA")
+                    try
                     {
-                        int hora = Convert.ToInt32(msg.Split(':')[1]);
-                        int minuto = Convert.ToInt32(msg.Split(':')[2]);
-                        int segundo = Convert.ToInt32(msg.Split(':')[3]);
+                        msg = sr.ReadLine();
+                        string tipo = msg.Split(':')[0];
 
-                        Console.WriteLine("El cliente con IP " + ieClient.Address + " ha proporcionado la hora : " + hora + ":" + minuto + ":" + segundo);
+                        if (tipo == "HORA")
+                        {
+                            msgParaElCliente = "El cliente con IP " + ieClient.Address + " ha proporcionado la hora : " + msg.Split(':')[1] + ":" + msg.Split(':')[2] + ":" + msg.Split(':')[3];
+                        }
+                        else if (tipo == "FECHA")
+                        {
+                            msgParaElCliente = "El cliente con IP " + ieClient.Address + " ha proporcionado la fecha : " + msg.Split(':')[1];
+                        }
+                        else if(tipo == "TODO")
+                        {
+                            msgParaElCliente = "El cliente con IP " + ieClient.Address + " ha proporcionado la hora : " + msg.Split(':')[1] + ":" + msg.Split(':')[2] + ":" + msg.Split(':')[3] + "\nEl cliente con IP " + ieClient.Address + " ha proporcionado la fecha : " + msg.Split(':')[1];
+                        }
+                        else if(tipo == "APAGAR")
+                        {
+                            msgParaElCliente = "Cerrando servidor...";
+                            Console.WriteLine(msgParaElCliente);
+                            s.Close();
+                        }
+
+                        Console.WriteLine(msgParaElCliente);
                     }
-                    else if (tipo == "FECHA")
+                    catch (IOException e)
                     {
-                        int dia = Convert.ToInt32(msg.Split(':')[1]);
-                        int mes = Convert.ToInt32(msg.Split(':')[2]);
-                        int anho = Convert.ToInt32(msg.Split(':')[3]);
-
-                        Console.WriteLine("El cliente con IP " + ieClient.Address + " ha proporcionado la fecha : " + dia + ":" + mes + ":" + anho);
-                    }
-                    else if(tipo == "TODO")
-                    {
-                        int dia = Convert.ToInt32(msg.Split(':')[1]);
-                        int mes = Convert.ToInt32(msg.Split(':')[2]);
-                        int anho = Convert.ToInt32(msg.Split(':')[3]);
-                        int hora = Convert.ToInt32(msg.Split(':')[4]);
-                        int minuto = Convert.ToInt32(msg.Split(':')[5]);
-                        int segundo = Convert.ToInt32(msg.Split(':')[6]);
-
-                        Console.WriteLine("El cliente con IP " + ieClient.Address + " ha proporcionado la hora : " + hora + ":" + minuto + ":" + segundo);
-                        Console.WriteLine("El cliente con IP " + ieClient.Address + " ha proporcionado la fecha : " + dia + ":" + mes + ":" + anho);
-                    }
-                    else if(tipo == "APAGAR")
-                    {
-                        Console.WriteLine("Cerrando servidor...");
+                        break;
                     }
                 }
-
-                sClient.Close();
-                Console.ReadLine();
-                s.Close();
             }
+
+            Console.ReadLine();
+            sClient.Close();
         }
     }
 }

@@ -37,9 +37,8 @@
             this.btnFECHA = new System.Windows.Forms.Button();
             this.btnTODO = new System.Windows.Forms.Button();
             this.btnAPAGAR = new System.Windows.Forms.Button();
-            this.txtComando = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.lblError = new System.Windows.Forms.Label();
+            this.lblComando = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,7 +51,7 @@
             this.txtPuerto});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(538, 27);
+            this.menuStrip1.Size = new System.Drawing.Size(441, 27);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -83,7 +82,7 @@
             // btnHORA
             // 
             this.btnHORA.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHORA.Location = new System.Drawing.Point(222, 119);
+            this.btnHORA.Location = new System.Drawing.Point(137, 158);
             this.btnHORA.Name = "btnHORA";
             this.btnHORA.Size = new System.Drawing.Size(79, 39);
             this.btnHORA.TabIndex = 1;
@@ -94,7 +93,7 @@
             // btnFECHA
             // 
             this.btnFECHA.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFECHA.Location = new System.Drawing.Point(341, 119);
+            this.btnFECHA.Location = new System.Drawing.Point(259, 158);
             this.btnFECHA.Name = "btnFECHA";
             this.btnFECHA.Size = new System.Drawing.Size(79, 39);
             this.btnFECHA.TabIndex = 2;
@@ -105,7 +104,7 @@
             // btnTODO
             // 
             this.btnTODO.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTODO.Location = new System.Drawing.Point(286, 164);
+            this.btnTODO.Location = new System.Drawing.Point(195, 203);
             this.btnTODO.Name = "btnTODO";
             this.btnTODO.Size = new System.Drawing.Size(79, 39);
             this.btnTODO.TabIndex = 3;
@@ -116,7 +115,7 @@
             // btnAPAGAR
             // 
             this.btnAPAGAR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAPAGAR.Location = new System.Drawing.Point(16, 223);
+            this.btnAPAGAR.Location = new System.Drawing.Point(12, 286);
             this.btnAPAGAR.Name = "btnAPAGAR";
             this.btnAPAGAR.Size = new System.Drawing.Size(91, 39);
             this.btnAPAGAR.TabIndex = 4;
@@ -124,43 +123,35 @@
             this.btnAPAGAR.UseVisualStyleBackColor = true;
             this.btnAPAGAR.Click += new System.EventHandler(this.pulsarBotonComando);
             // 
-            // txtComando
-            // 
-            this.txtComando.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.txtComando.Location = new System.Drawing.Point(222, 87);
-            this.txtComando.Name = "txtComando";
-            this.txtComando.Size = new System.Drawing.Size(198, 26);
-            this.txtComando.TabIndex = 5;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label1.Location = new System.Drawing.Point(12, 90);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(188, 20);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Mensaje para el servidor :";
-            // 
             // lblError
             // 
             this.lblError.AutoSize = true;
             this.lblError.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.lblError.ForeColor = System.Drawing.Color.Red;
-            this.lblError.Location = new System.Drawing.Point(167, 242);
+            this.lblError.Location = new System.Drawing.Point(157, 295);
             this.lblError.Name = "lblError";
             this.lblError.Size = new System.Drawing.Size(106, 20);
             this.lblError.TabIndex = 7;
             this.lblError.Text = "Aviso de error";
             // 
+            // lblComando
+            // 
+            this.lblComando.AutoSize = true;
+            this.lblComando.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblComando.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblComando.Location = new System.Drawing.Point(12, 36);
+            this.lblComando.Name = "lblComando";
+            this.lblComando.Size = new System.Drawing.Size(82, 20);
+            this.lblComando.TabIndex = 8;
+            this.lblComando.Text = "Resultado";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(538, 286);
+            this.ClientSize = new System.Drawing.Size(441, 337);
+            this.Controls.Add(this.lblComando);
             this.Controls.Add(this.lblError);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtComando);
             this.Controls.Add(this.btnAPAGAR);
             this.Controls.Add(this.btnTODO);
             this.Controls.Add(this.btnFECHA);
@@ -187,9 +178,8 @@
         private System.Windows.Forms.Button btnFECHA;
         private System.Windows.Forms.Button btnTODO;
         private System.Windows.Forms.Button btnAPAGAR;
-        private System.Windows.Forms.TextBox txtComando;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblError;
+        private System.Windows.Forms.Label lblComando;
     }
 }
 

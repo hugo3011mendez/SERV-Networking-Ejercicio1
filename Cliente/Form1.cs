@@ -51,6 +51,10 @@ namespace Cliente
         public Form1()
         {
             InitializeComponent();
+            txtIP.Text = "127.0.0.1";
+            txtPuerto.Text = "31416";
+
+            lblComando.Text = "";
             lblError.Text = "";
         }
 
@@ -69,15 +73,15 @@ namespace Cliente
 
                 if (sender == btnHORA)
                 {
-                    comando = "HORA:" + txtComando.Text;
+                    comando = "HORA:" + DateTime.Now.ToString("HH:mm:ss");
                 }
                 else if (sender == btnFECHA)
                 {
-                    comando = "FECHA:" + txtComando.Text;
+                    comando = "FECHA:" + DateTime.Now.ToString("dd/MM/yyyy");
                 }
                 else if (sender == btnTODO)
                 {
-                    comando = "TODO:" + txtComando.Text;
+                    comando = "TODO:" + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
                 }
                 else if(sender == btnAPAGAR)
                 {
@@ -92,8 +96,9 @@ namespace Cliente
                     sw.Flush();
                 }
 
-                server.Close();
             }
+
+            server.Close();
         }
     }
 
