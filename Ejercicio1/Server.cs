@@ -13,10 +13,10 @@ namespace Ejercicio1
     {
         static void Main(string[] args)
         {
-            IPEndPoint ie = new IPEndPoint(IPAddress.Any, 31416); // Establezco un par IP-Puerto para el server
+            IPEndPoint ie = new IPEndPoint(IPAddress.Loopback, 31416); // Establezco un par IP-Puerto para el server
             Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp); // Establezco el Socket
             s.Bind(ie); // Se enlaza el Socket al IPEndPoint
-            s.Listen(5); // Se queda esperando una conexión y se establece la cola a 5
+            s.Listen(5); // Se queda esperando una conexión y se establece la cola a 5 clientes máximo en cola
 
 
             // Cliente :
@@ -36,7 +36,8 @@ namespace Ejercicio1
                 sw.Flush(); // Fuerzo el envío de los datos sin esperar al cierre de la conexión
 
                 string msg = ""; // Creo y defino variable para el mensaje que manda el cliente
-                while (msg != null) // Mientras el mensaje escrito por el cliente no sea null...
+                // No pongo un while porque el ejercicio requiere que se cierre la conexión después de mandar un comando al servidor
+                if (msg != null) // Si el mensaje escrito por el cliente no es null...
                 {
                     string tipo = msg.Split(':')[0];
 
@@ -48,16 +49,29 @@ namespace Ejercicio1
                     }
                     else if (tipo == "FECHA")
                     {
-
+                        int dia = Convert.ToInt32(msg.Split(':')[1]);
+                        int mes = Convert.ToInt32(msg.Split(':')[2]);
+                        int anho = Convert.ToInt32(msg.Split(':')[3]);
                     }
                     else if(tipo == "TODO")
                     {
-                        int hora = Convert.ToInt32(msg.Split(':')[1]);
-                        int minuto = Convert.ToInt32(msg.Split(':')[2]);
-                        int segundo = Convert.ToInt32(msg.Split(':')[3]);
-                    }
+                        int dia = Convert.ToInt32(msg.Split(':')[1]);
+                        int mes = Convert.ToInt32(msg.Split(':')[2]);
+                        int anho = Convert.ToInt32(msg.Split(':')[3]);
+                        int hora = Convert.ToInt32(msg.Split(':')[4]);
+                        int minuto = Convert.ToInt32(msg.Split(':')[5]);
+                        int segundo = Convert.ToInt32(msg.Split(':')[6]);
 
+                    }
+                    else if(tipo == "APAGAR")
+                    {
+                        Console.WriteLine("Cerrando servidor...");
+                    }
                 }
+
+                sClient.Close();
+                Console.ReadLine();
+                s.Close();
             }
         }
     }
