@@ -32,7 +32,7 @@ namespace Ejercicio1
             using (StreamReader sr = new StreamReader(ns))
             using (StreamWriter sw = new StreamWriter(ns))
             {
-                sw.WriteLine("Bienvenido al servidor de hora y fecha!");
+                sw.WriteLine("Bienvenido al servidor de hora y fecha! IP : " + ieClient.Address);
                 sw.Flush(); // Fuerzo el envío de los datos sin esperar al cierre de la conexión
 
                 string msg = ""; // Creo y defino variable para el mensaje que manda el cliente
@@ -46,12 +46,16 @@ namespace Ejercicio1
                         int hora = Convert.ToInt32(msg.Split(':')[1]);
                         int minuto = Convert.ToInt32(msg.Split(':')[2]);
                         int segundo = Convert.ToInt32(msg.Split(':')[3]);
+
+                        Console.WriteLine("El cliente con IP " + ieClient.Address + " ha proporcionado la hora : " + hora + ":" + minuto + ":" + segundo);
                     }
                     else if (tipo == "FECHA")
                     {
                         int dia = Convert.ToInt32(msg.Split(':')[1]);
                         int mes = Convert.ToInt32(msg.Split(':')[2]);
                         int anho = Convert.ToInt32(msg.Split(':')[3]);
+
+                        Console.WriteLine("El cliente con IP " + ieClient.Address + " ha proporcionado la fecha : " + dia + ":" + mes + ":" + anho);
                     }
                     else if(tipo == "TODO")
                     {
@@ -62,6 +66,8 @@ namespace Ejercicio1
                         int minuto = Convert.ToInt32(msg.Split(':')[5]);
                         int segundo = Convert.ToInt32(msg.Split(':')[6]);
 
+                        Console.WriteLine("El cliente con IP " + ieClient.Address + " ha proporcionado la hora : " + hora + ":" + minuto + ":" + segundo);
+                        Console.WriteLine("El cliente con IP " + ieClient.Address + " ha proporcionado la fecha : " + dia + ":" + mes + ":" + anho);
                     }
                     else if(tipo == "APAGAR")
                     {
