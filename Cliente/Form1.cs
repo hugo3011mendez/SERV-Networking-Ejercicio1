@@ -35,9 +35,7 @@ namespace Cliente
                 }
                 catch (SocketException e)
                 {
-                    Console.WriteLine("Error connection: {0}\nError code: {1}({2})",
-                    e.Message, (SocketError)e.ErrorCode, e.ErrorCode);
-                    Console.ReadKey();
+                    lblError.Text = "Error connection: " + e.Message + "\nError code: " + (SocketError)e.ErrorCode + "(" + e.ErrorCode + ")";
                     return false; // Si da error en la conexión, devuelve false
                 }
             }
