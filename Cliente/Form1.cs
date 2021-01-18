@@ -71,32 +71,21 @@ namespace Cliente
             {
                 lblError.Text = "";
 
-                if (sender == btnHORA)
-                {
-                    comando = "HORA";
-                }
-                else if (sender == btnFECHA)
-                {
-                    comando = "FECHA";
-                }
-                else if (sender == btnTODO)
-                {
-                    comando = "TODO";
-                }
-                else if(sender == btnAPAGAR)
-                {
-                    comando = "APAGAR";
-                }
-
+                // Le doy valor a la variable comando con la propiedad Tag del botón pulsado, así me ahorro código
+                Button pulsado = (Button)sender;
+                comando = pulsado.Tag.ToString();
+                
                 using (NetworkStream ns = new NetworkStream(server)) // Se crea un Stream que hará de puente entre el Socket, el StreamReader y el StreamWriter
                 using (StreamReader sr = new StreamReader(ns))
                 using (StreamWriter sw = new StreamWriter(ns))
                 {
                     sw.WriteLine(comando);
                     sw.Flush();
+
+                    sr.ReadLine();
                     try
                     {
-                        string respuestaServer = sr.ReadLine();
+                        string respuestaServer = sr.ReadToEnd();
                         lblComando.Text = respuestaServer;
                     }
                     catch (IOException e1)
@@ -106,7 +95,7 @@ namespace Cliente
                 }
 
             }
-            //server.Close();
+            server.Close();
         }
     }
 

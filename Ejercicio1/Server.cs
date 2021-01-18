@@ -18,7 +18,6 @@ namespace Ejercicio1
             s.Bind(ie); // Se enlaza el Socket al IPEndPoint
             s.Listen(5); // Se queda esperando una conexión y se establece la cola a 5 clientes máximo en cola
 
-
             bool conexion = true;
             while (conexion)
             {
@@ -61,7 +60,7 @@ namespace Ejercicio1
 
                             case "APAGAR":
                                 msgParaElCliente = "Cerrando conexión...";
-                                Console.WriteLine(msgParaElCliente);
+                                conexion = false;
                                 break;
 
                             default:
@@ -69,7 +68,6 @@ namespace Ejercicio1
                                 break;
                         }
 
-                        Console.WriteLine(msgParaElCliente);
                         sw.WriteLine(msgParaElCliente);
                     }
                     catch (IOException e)
@@ -78,9 +76,10 @@ namespace Ejercicio1
                         break;
                     }
                 }
+
+                sClient.Close();
             }
 
-            Console.ReadLine();
             s.Close();
         }
     }

@@ -51,7 +51,7 @@
             this.txtPuerto});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(441, 27);
+            this.menuStrip1.Size = new System.Drawing.Size(525, 27);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -86,6 +86,7 @@
             this.btnHORA.Name = "btnHORA";
             this.btnHORA.Size = new System.Drawing.Size(79, 39);
             this.btnHORA.TabIndex = 1;
+            this.btnHORA.Tag = "HORA";
             this.btnHORA.Text = "HORA";
             this.btnHORA.UseVisualStyleBackColor = true;
             this.btnHORA.Click += new System.EventHandler(this.pulsarBotonComando);
@@ -97,6 +98,7 @@
             this.btnFECHA.Name = "btnFECHA";
             this.btnFECHA.Size = new System.Drawing.Size(79, 39);
             this.btnFECHA.TabIndex = 2;
+            this.btnFECHA.Tag = "FECHA";
             this.btnFECHA.Text = "FECHA";
             this.btnFECHA.UseVisualStyleBackColor = true;
             this.btnFECHA.Click += new System.EventHandler(this.pulsarBotonComando);
@@ -108,6 +110,7 @@
             this.btnTODO.Name = "btnTODO";
             this.btnTODO.Size = new System.Drawing.Size(79, 39);
             this.btnTODO.TabIndex = 3;
+            this.btnTODO.Tag = "TODO";
             this.btnTODO.Text = "TODO";
             this.btnTODO.UseVisualStyleBackColor = true;
             this.btnTODO.Click += new System.EventHandler(this.pulsarBotonComando);
@@ -119,6 +122,7 @@
             this.btnAPAGAR.Name = "btnAPAGAR";
             this.btnAPAGAR.Size = new System.Drawing.Size(91, 39);
             this.btnAPAGAR.TabIndex = 4;
+            this.btnAPAGAR.Tag = "APAGAR";
             this.btnAPAGAR.Text = "APAGAR";
             this.btnAPAGAR.UseVisualStyleBackColor = true;
             this.btnAPAGAR.Click += new System.EventHandler(this.pulsarBotonComando);
@@ -128,7 +132,7 @@
             this.lblError.AutoSize = true;
             this.lblError.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.lblError.ForeColor = System.Drawing.Color.Red;
-            this.lblError.Location = new System.Drawing.Point(110, 295);
+            this.lblError.Location = new System.Drawing.Point(13, 131);
             this.lblError.Name = "lblError";
             this.lblError.Size = new System.Drawing.Size(97, 17);
             this.lblError.TabIndex = 7;
@@ -149,7 +153,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(441, 337);
+            this.ClientSize = new System.Drawing.Size(525, 337);
             this.Controls.Add(this.lblComando);
             this.Controls.Add(this.lblError);
             this.Controls.Add(this.btnAPAGAR);
