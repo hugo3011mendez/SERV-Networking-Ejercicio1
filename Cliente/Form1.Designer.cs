@@ -100,11 +100,11 @@
             // lblError
             // 
             this.lblError.AutoSize = true;
-            this.lblError.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblError.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.lblError.ForeColor = System.Drawing.Color.Red;
             this.lblError.Location = new System.Drawing.Point(13, 131);
             this.lblError.Name = "lblError";
-            this.lblError.Size = new System.Drawing.Size(97, 17);
+            this.lblError.Size = new System.Drawing.Size(81, 15);
             this.lblError.TabIndex = 7;
             this.lblError.Text = "Aviso de error";
             // 
