@@ -29,55 +29,25 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtIP = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtPuerto = new System.Windows.Forms.ToolStripTextBox();
             this.btnHORA = new System.Windows.Forms.Button();
             this.btnFECHA = new System.Windows.Forms.Button();
             this.btnTODO = new System.Windows.Forms.Button();
             this.btnAPAGAR = new System.Windows.Forms.Button();
             this.lblError = new System.Windows.Forms.Label();
             this.lblComando = new System.Windows.Forms.Label();
+            this.MenuItemParametros = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.txtIP,
-            this.toolStripMenuItem2,
-            this.txtPuerto});
+            this.MenuItemParametros});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(525, 27);
+            this.menuStrip1.Size = new System.Drawing.Size(525, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(35, 23);
-            this.toolStripMenuItem1.Text = "IP :";
-            // 
-            // txtIP
-            // 
-            this.txtIP.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtIP.Name = "txtIP";
-            this.txtIP.Size = new System.Drawing.Size(100, 23);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(60, 23);
-            this.toolStripMenuItem2.Text = "Puerto :";
-            // 
-            // txtPuerto
-            // 
-            this.txtPuerto.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtPuerto.Name = "txtPuerto";
-            this.txtPuerto.Size = new System.Drawing.Size(100, 23);
             // 
             // btnHORA
             // 
@@ -149,6 +119,13 @@
             this.lblComando.TabIndex = 8;
             this.lblComando.Text = "Resultado";
             // 
+            // MenuItemParametros
+            // 
+            this.MenuItemParametros.Name = "MenuItemParametros";
+            this.MenuItemParametros.Size = new System.Drawing.Size(79, 23);
+            this.MenuItemParametros.Text = "Parámetros";
+            this.MenuItemParametros.Click += new System.EventHandler(this.MenuItemParametros_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -174,16 +151,13 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripTextBox txtIP;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripTextBox txtPuerto;
         private System.Windows.Forms.Button btnHORA;
         private System.Windows.Forms.Button btnFECHA;
         private System.Windows.Forms.Button btnTODO;
         private System.Windows.Forms.Button btnAPAGAR;
         private System.Windows.Forms.Label lblError;
         private System.Windows.Forms.Label lblComando;
+        private System.Windows.Forms.ToolStripMenuItem MenuItemParametros;
     }
 }
 

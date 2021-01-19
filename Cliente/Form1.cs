@@ -15,33 +15,28 @@ namespace Cliente
 {
     public partial class Form1 : Form
     {
+        String ip = "127.0.0.1";
+        int puerto = 31416;
         IPEndPoint ie;
         Socket server;
 
         // Función donde el cliente se conecta al servidor indicado
         public bool conectarServer()
         {
-            if (txtIP.Text != "" && txtPuerto.Text != "")
+            // Formateo el texto escrito en los textboxes para la conexión al servidor :
+            ie = new IPEndPoint(IPAddress.Parse(ip.Trim()), puerto);
+
+            server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp); // Y creo el socket del servidor
+
+            try
             {
-                // Formateo el texto escrito en los textboxes para la conexión al servidor :
-                ie = new IPEndPoint(IPAddress.Parse(txtIP.Text.Trim()), Convert.ToInt32(txtPuerto.Text.Trim()));
-
-                server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp); // Y creo el socket del servidor
-
-                try
-                {
-                    // El cliente inicia la conexión haciendo petición con Connect
-                    server.Connect(ie);
-                }
-                catch (SocketException e)
-                {
-                    lblError.Text = "Error connection: " + e.Message + "\nError code: " + (SocketError)e.ErrorCode + "(" + e.ErrorCode + ")";
-                    return false; // Si da error en la conexión, devuelve false
-                }
+                // El cliente inicia la conexión haciendo petición con Connect
+                server.Connect(ie);
             }
-            else
+            catch (SocketException e)
             {
-                return false; // Si los textboxes de la IP y el puerto están vacíos, devuelve false
+                lblError.Text = "Error connection: " + e.Message + "\nError code: " + (SocketError)e.ErrorCode + "(" + e.ErrorCode + ")";
+                return false; // Si da error en la conexión, devuelve false
             }
 
             return true;
@@ -51,8 +46,6 @@ namespace Cliente
         public Form1()
         {
             InitializeComponent();
-            txtIP.Text = "127.0.0.1";
-            txtPuerto.Text = "31416";
 
             lblComando.Text = "";
             lblError.Text = "";
@@ -96,6 +89,21 @@ namespace Cliente
 
             }
             server.Close();
+        }
+
+        private void MenuItemParametros_Click(object sender, EventArgs e)
+        {
+            Form2 f = new Form2();
+            DialogResult res;
+            res = f.ShowDialog(); //Aquí se para la ejecución del programa
+
+            switch (res)
+            {
+                case DialogResult.OK:
+                    ip = f.txtIP.Text.Trim();
+                    puerto = Convert.ToInt32( f.txtPuerto.Text.Trim());
+                break;
+            }
         }
     }
 
