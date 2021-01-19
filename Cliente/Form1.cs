@@ -93,16 +93,38 @@ namespace Cliente
 
         private void MenuItemParametros_Click(object sender, EventArgs e)
         {
-            Form2 f = new Form2();
-            DialogResult res;
-            res = f.ShowDialog(); //Aquí se para la ejecución del programa
-
-            switch (res)
+            // Creo una variable booleana y un bucle para validar la IP y el puerto escritos en el formulario
+            bool repetir = true;
+            while (repetir)
             {
-                case DialogResult.OK:
-                    ip = f.txtIP.Text.Trim();
-                    puerto = Convert.ToInt32( f.txtPuerto.Text.Trim());
-                break;
+                Form2 f = new Form2();
+                DialogResult res;
+                res = f.ShowDialog(); // Aquí se para la ejecución del programa
+
+                switch (res)
+                {
+                    case DialogResult.OK:
+
+                        // Defino un contador de los puntos que contiene la IP escrita
+                        int contadorPuntos = 0;
+                        for (int i = 0; i < f.txtIP.Text.Trim().Length; i++)
+                        {
+                            if (f.txtIP.Text.Trim()[i] == '.')
+                            {
+                                contadorPuntos ++;
+                            }
+                        }
+
+                        // Si hay 3 puntos en la IP y ésta tiene un máximo de 3 números por clase
+                        if (contadorPuntos == 3 && f.txtIP.Text.Trim().Length <= 15)
+                        {
+                            ip = f.txtIP.Text.Trim();
+                            repetir = false;
+                        }
+
+                        puerto = Convert.ToInt32(f.txtPuerto.Text.Trim());
+                    break;
+                }
             }
         }
     }
