@@ -122,7 +122,22 @@ namespace Cliente
                             repetir = false;
                         }
 
-                        puerto = Convert.ToInt32(f.txtPuerto.Text.Trim());
+                        try
+                        {
+                            puerto = Convert.ToInt32(f.txtPuerto.Text.Trim());
+
+                            if (puerto >= 0 && puerto <= 65535)
+                            {
+                                puerto = Convert.ToInt32(f.txtPuerto.Text.Trim());
+                                repetir = false;
+                            }
+                        }
+                        catch (Exception e2) when (e2 is FormatException || e2 is OverflowException)
+                        {
+                            repetir = true;
+                        }
+
+
                     break;
                 }
             }
